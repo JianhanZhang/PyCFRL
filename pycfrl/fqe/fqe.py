@@ -1,11 +1,11 @@
 import numpy as np
 import torch
 import copy
-from .utils.base_models import LinearRegressor, NeuralNet
-from .utils.base_models import DecreasingLossWarning, FluctuatingQValueWarning
-from .utils.base_models import EarlyStoppingChecker, LossMonitor, QValueConvergenceChecker
-from .utils.custom_errors import InvalidModelError
-from .agents import Agent
+from ..utils.base_models import LinearRegressor, NeuralNet
+from ..utils.base_models import DecreasingLossWarning, FluctuatingQValueWarning
+from ..utils.base_models import EarlyStoppingChecker, LossMonitor, QValueConvergenceChecker
+from ..utils.custom_errors import InvalidModelError
+from ..agents.agents import Agent
 from sklearn.model_selection import train_test_split
 #from my_utils import glogger
 from typing import Literal, Callable

@@ -3,11 +3,11 @@ import numpy as np
 import torch
 import copy
 #from utils.utils import glogger
-from .utils.base_models import LinearRegressor, NeuralNet
-from .utils.base_models import DecreasingLossWarning, FluctuatingQValueWarning
-from .utils.base_models import EarlyStoppingChecker, LossMonitor, QValueConvergenceChecker
-from .utils.custom_errors import InvalidModelError
-from .preprocessor import Preprocessor, SequentialPreprocessor
+from ..utils.base_models import LinearRegressor, NeuralNet
+from ..utils.base_models import DecreasingLossWarning, FluctuatingQValueWarning
+from ..utils.base_models import EarlyStoppingChecker, LossMonitor, QValueConvergenceChecker
+from ..utils.custom_errors import InvalidModelError
+from ..preprocessor.preprocessor import Preprocessor, SequentialPreprocessor
 from sklearn.model_selection import train_test_split
 from typing import Literal
 from tqdm import tqdm

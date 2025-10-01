@@ -1,5 +1,5 @@
-from pycfrl.fqe import FQE
-from pycfrl.environment import SyntheticEnvironment, sample_trajectory
+from pycfrl.fqe.fqe import FQE
+from pycfrl.environment.environment import SyntheticEnvironment, sample_trajectory
 from examples.baseline_agents import RandomAgent
 import numpy as np
 import pytest

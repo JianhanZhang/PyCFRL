@@ -1,6 +1,6 @@
-from pycfrl.agents import FQI
+from pycfrl.agents.agents import FQI
 from examples.baseline_preprocessors import ConcatenatePreprocessor
-from pycfrl.environment import SyntheticEnvironment, sample_trajectory
+from pycfrl.environment.environment import SyntheticEnvironment, sample_trajectory
 from examples.baseline_agents import RandomAgent
 import numpy as np
 import pytest

@@ -1,14 +1,14 @@
 import sys
 sys.path.append("E:/learning/university/MiSIL/CFRL Python Package/CFRL")
 
-from pycfrl.preprocessor import SequentialPreprocessor
+from pycfrl.preprocessor.preprocessor import SequentialPreprocessor
 from .baseline_preprocessors import SequentialPreprocessorOracle, UnawarenessPreprocessor
 from .baseline_preprocessors import ConcatenatePreprocessor
-from pycfrl.agents import FQI
+from pycfrl.agents.agents import FQI
 from .baseline_agents import RandomAgent, BehaviorAgent
-from pycfrl.environment import SyntheticEnvironment, sample_trajectory
-from pycfrl.evaluation import evaluate_reward_through_simulation
-from pycfrl.evaluation import evaluate_fairness_through_simulation
+from pycfrl.environment.environment import SyntheticEnvironment, sample_trajectory
+from pycfrl.evaluation.evaluation import evaluate_reward_through_simulation
+from pycfrl.evaluation.evaluation import evaluate_fairness_through_simulation
 import pandas as pd
 import numpy as np
 import numpy as np

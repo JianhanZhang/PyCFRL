@@ -5,13 +5,13 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import copy
-from .environment import sample_trajectory, sample_counterfactual_trajectories
-from .environment import SyntheticEnvironment, SimulatedEnvironment
-from .environment import estimate_counterfactual_trajectories_from_data
-from .fqe import FQE
-from .agents import Agent
+from ..environment.environment import sample_trajectory, sample_counterfactual_trajectories
+from ..environment.environment import SyntheticEnvironment, SimulatedEnvironment
+from ..environment.environment import estimate_counterfactual_trajectories_from_data
+from ..fqe.fqe import FQE
+from ..agents.agents import Agent
 from typing import Union, Callable, Literal
-from .utils.custom_errors import InvalidModelError
+from ..utils.custom_errors import InvalidModelError
 
 def f_ux_default(N: int, state_dim: int) -> np.ndarray:
     """

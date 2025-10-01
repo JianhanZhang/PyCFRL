@@ -1,9 +1,9 @@
 from abc import abstractmethod
 import numpy as np
 from sklearn.linear_model import LinearRegression
-from .utils.base_models import NeuralNetRegressor, LinearRegressor
+from ..utils.base_models import NeuralNetRegressor, LinearRegressor
 #from utils.utils import timer_func
-from .utils.custom_errors import InvalidModelError
+from ..utils.custom_errors import InvalidModelError
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import OneHotEncoder
 from typing import Union, Literal

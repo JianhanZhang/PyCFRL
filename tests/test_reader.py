@@ -1,4 +1,4 @@
-from pycfrl.reader import read_trajectory_from_csv, convert_trajectory_to_dataframe
+from pycfrl.reader.reader import read_trajectory_from_csv, convert_trajectory_to_dataframe
 import numpy as np
 import pandas as pd
 

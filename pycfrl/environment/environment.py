@@ -3,10 +3,10 @@ import numpy as np
 import copy
 import torch
 from sklearn.preprocessing import OneHotEncoder
-from .utils.base_models import NeuralNetRegressor, LinearRegressor
-from .utils.custom_errors import InvalidModelError
+from ..utils.base_models import NeuralNetRegressor, LinearRegressor
+from ..utils.custom_errors import InvalidModelError
 from typing import Union, Callable, Literal, Dict
-from .agents import Agent
+from ..agents.agents import Agent
 
 def f_x0_default(
         zs: list | np.ndarray, 

@@ -1,15 +1,15 @@
 import pandas as pd
 import numpy as np
-from pycfrl.environment import SyntheticEnvironment, sample_trajectory
-from pycfrl.environment import SimulatedEnvironment, sample_simulated_env_trajectory
-from pycfrl.reader import read_trajectory_from_csv, read_trajectory_from_dataframe
+from pycfrl.environment.environment import SyntheticEnvironment, sample_trajectory
+from pycfrl.environment.environment import SimulatedEnvironment, sample_simulated_env_trajectory
+from pycfrl.reader.reader import read_trajectory_from_csv, read_trajectory_from_dataframe
 from sklearn.model_selection import train_test_split
-from pycfrl.preprocessor import SequentialPreprocessor
+from pycfrl.preprocessor.preprocessor import SequentialPreprocessor
 from examples.baseline_preprocessors import UnawarenessPreprocessor, ConcatenatePreprocessor
-from pycfrl.agents import FQI
+from pycfrl.agents.agents import FQI
 from examples.baseline_agents import BehaviorAgent, RandomAgent
 #from policy_learning_add import RandomAgent
-from pycfrl.evaluation import evaluate_fairness_through_model, evaluate_reward_through_fqe
+from pycfrl.evaluation.evaluation import evaluate_fairness_through_model, evaluate_reward_through_fqe
 import torch
 import pytest
 

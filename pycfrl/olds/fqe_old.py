@@ -3,7 +3,7 @@ import torch
 import copy
 from utils.base_models import LinearRegressor, NeuralNet
 from utils.custom_errors import InvalidModelError
-from agents import Agent
+from pycfrl.agents.agents import Agent
 #from my_utils import glogger
 from typing import Literal, Callable
 from tqdm import tqdm

@@ -110,7 +110,7 @@ of the modules are summarized in the table below.
 |`environment` |Implements a synthetic environment that produces synthetic data as well as a simulated environment that estimates and simulates the transition dynamics of the unknown environment underlying some real-world RL trajectory data. Also implements functions for sampling trajectories from the synthetic and simulated environments.                                        |
 |`evaluation`  |Implements functions that evaluate the value and counterfactual unfairness level of a policy. Depending on the user's needs, the evaluation can be done either in a synthetic environment or in a simulated environment.                                  |
 
-A general PyCFRL workflow is as follows: First, simulate trajectories using `environment` or read 
+A general `PyCFRL` workflow is as follows: First, simulate trajectories using `environment` or read 
 in trajectories using `reader`. Then, train a preprocessor using `preprocessor` and preprocess the training trajectory data. After that, pass the preprocessed trajectories into the FQI algorithm in 
 `agents` to learn a counterfactually fair policy. Finally, use functions in `evaluation` to 
 evaluate the value and counterfactual unfairness level of the trained policy. 

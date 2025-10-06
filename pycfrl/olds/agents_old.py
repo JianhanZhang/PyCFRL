@@ -5,7 +5,7 @@ import copy
 #from utils.utils import glogger
 from utils.base_models import LinearRegressor, NeuralNet
 from utils.custom_errors import InvalidModelError
-from preprocessor import Preprocessor, SequentialPreprocessor
+from pycfrl.preprocessor.preprocessor import Preprocessor, SequentialPreprocessor
 from typing import Literal
 from tqdm import tqdm
 

@@ -121,7 +121,7 @@ In addition, `PyCFRL` also provides tools to check for potential non-convergence
 
 We provide a data example showing how `PyCFRL` learns counterfactually fair policies from real-world trajectory data with unknown underlying transition dynamics. The example demonstrates policy learning and evaluation of both value and unfairness levels. This represents just one of many possible workflows. `PyCFRL` can also generate synthetic trajectory data and evaluate custom preprocessing methods. See the ["Example Workflows"](https://cfrl-documentation.netlify.app/tutorials/example_workflows) documentation for more examples.
 
-We record the computing times of different workflows under different combinations of the number of individuals ($N$) and the length of horizons ($T$) in the ["Computing Times"](https://cfrl-documentation.netlify.app/introduction/computing_times) section of the PyCFRL documentation. For example, under $N=500$ and $T=10$, the workflow presented in this data example ("real data workflow" in the documentation) ran for $378.6$ seconds on average in our computing environment.
+We record the computing times of different workflows under different combinations of the number of individuals ($N$) and the length of horizons ($T$) in the ["Computing Times"](https://cfrl-documentation.netlify.app/introduction/computing_times) section of the `PyCFRL` documentation. For example, under $N=500$ and $T=10$, the workflow presented in this data example ("real data workflow" in the documentation) ran for $378.6$ seconds on average in our computing environment.
 
 
 #### Load Data
@@ -157,7 +157,7 @@ states_tilde, rewards_tilde = sp.train_preprocessor(
 
 #### Counterfactually Fair Policy Learning
 
-Next, we train a counterfactually fair policy using the preprocessed data and `FQI` with `sp` as its internal preprocessor. By default, the input data will first be preprocessed by `sp` before being used for policy learning. However, since the training data `state_tilde` and `rewards_tilde` are already preprocessed in our case, we set `preprocess=False` during training so that the input trajectory will not be preprocessed again by the internal preprocessor (i.e., `sp`).
+Next, we train a counterfactually fair policy using the preprocessed data and `FQI` with `sp` as its internal preprocessor. By default, the input data will first be preprocessed by `sp` before being used for policy learning. However, since the training data `states_tilde` and `rewards_tilde` are already preprocessed in our case, we set `preprocess=False` during training so that the input trajectory will not be preprocessed again by the internal preprocessor (i.e., `sp`).
 
 ```python
 agent = FQI(num_actions=2, model_type='nn', preprocessor=sp)
@@ -190,7 +190,7 @@ The estimated value is $7.358$ and the CF metric is $0.042$, which indicates our
 
 #### Comparisons against Baseline Methods
 
-We can compare the sequential data preprocessing method in `PyCFRL` against a few baselines: "Random", which selects each action randomly with equal probability; "Full", which uses all variables, including the sensitive attribute, for policy learning; and "Unaware", which uses all variables except the sensitive attribute for policy learning. We implemented these baselines and evaluated their values and counterfactual unfairness levels as part of the code example of the "Assessing Policies Using Real Data" workflow in the ["Example Workflows"](https://cfrl-documentation.netlify.app/tutorials/example_workflows) section of the PyCFRL documentation. We summarize below the values and CF metrics calculated in this code example, where "Ours" stands for outputs from the `SequentialPreprocessor`.
+We can compare the sequential data preprocessing method in `PyCFRL` against a few baselines: "Random", which selects each action randomly with equal probability; "Full", which uses all variables, including the sensitive attribute, for policy learning; and "Unaware", which uses all variables except the sensitive attribute for policy learning. We implemented these baselines and evaluated their values and counterfactual unfairness levels as part of the code example of the "Assessing Policies Using Real Data" workflow in the ["Example Workflows"](https://cfrl-documentation.netlify.app/tutorials/example_workflows) section of the `PyCFRL` documentation. We summarize below the values and CF metrics calculated in this code example, where "Ours" stands for outputs from the `SequentialPreprocessor`.
 
 |                               |Random  |Full   |Unaware|Ours   |                                                    
 |-------------------------------|--------|-------|-------|-------|

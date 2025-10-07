@@ -1,6 +1,6 @@
 # PyCFRL: A Python Library for Counterfactually Fair Reinforcement Learning
 
-Documentation: [PyCFRL Documentation](https://cfrl-documentation.netlify.app/).
+Documentation: [PyCFRL Documentation](https://pycfrl-documentation.netlify.app/).
 
 Software paper: To be updated. 
 

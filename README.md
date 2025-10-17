@@ -1,8 +1,12 @@
 # PyCFRL: A Python Library for Counterfactually Fair Reinforcement Learning
 
+[![PyPI version](https://img.shields.io/pypi/v/pycfrl)](https://pypi.org/project/pycfrl/)
+
+[![PyPI downloads](https://img.shields.io/pypi/dm/pycfrl)](https://pypi.org/project/pycfrl/)
+
 Documentation: [PyCFRL Documentation](https://pycfrl-documentation.netlify.app/).
 
-Software paper: To be updated. 
+Software paper: [PyCFRL: A Python library for counterfactually fair offline reinforcement learning via sequential data preprocessing](https://arxiv.org/abs/2510.06935). 
 
 *Note: This library was originally named CFRL, but we later changed the name to PyCFRL.*
 

@@ -24,7 +24,7 @@ the use cases of PyCFRL. We appreciate your patience and support!
 
 `[PyCFRL Github repository] <https://github.com/JianhanZhang/CFRL>`_
 
-[PyCFRL software paper]
+`[PyCFRL software paper] <https://arxiv.org/abs/2510.06935>`_
 
 .. toctree::
    :maxdepth: 1

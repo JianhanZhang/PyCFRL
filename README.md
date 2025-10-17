@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/pycfrl)](https://pypi.org/project/pycfrl/)
 [![PyPI total downloads](https://img.shields.io/pypi/dt/pycfrl)](https://pepy.tech/project/pycfrl)
-[![PyPI monthly downloads](https://img.shields.io/pypi/dm/pycfrl)](https://pypi.org/project/pycfrl/)
+[![PyPI monthly downloads](https://img.shields.io/pypi/dm/pycfrl)](https://pepy.tech/project/pycfrl)
 [![PyPI weekly downloads](https://img.shields.io/pypi/dw/pycfrl)](https://pepy.tech/project/pycfrl)
 [![License](https://img.shields.io/pypi/l/pycfrl)](https://pypi.org/project/pycfrl/)
 

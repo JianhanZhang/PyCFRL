@@ -2,8 +2,8 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/pycfrl)](https://pypi.org/project/pycfrl/)
 [![PyPI total downloads](https://static.pepy.tech/personalized-badge/pycfrl?period=total&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pycfrl)
-[![PyPI monthly downloads](https://img.shields.io/pypi/dm/pycfrl)](https://pepy.tech/project/pycfrl)
-[![PyPI weekly downloads](https://img.shields.io/pypi/dw/pycfrl)](https://pepy.tech/project/pycfrl)
+[![PyPI monthly downloads](https://static.pepy.tech/personalized-badge/pycfrl?period=monthly&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pycfrl)
+[![PyPI weekly downloads](https://static.pepy.tech/personalized-badge/pycfrl?period=weekly&units=INTERNATIONAL_SYSTEM&left_color=BLACK&right_color=GREEN&left_text=downloads)](https://pepy.tech/projects/pycfrl)
 [![License](https://img.shields.io/pypi/l/pycfrl)](https://pypi.org/project/pycfrl/)
 
 Documentation: [PyCFRL Documentation](https://pycfrl-documentation.netlify.app/).

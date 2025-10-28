@@ -1,8 +1,8 @@
 # PyCFRL: A Python Library for Counterfactually Fair Reinforcement Learning
 
 [![PyPI version](https://img.shields.io/pypi/v/pycfrl)](https://pypi.org/project/pycfrl/)
-[![PyPI total downloads](https://static.pepy.tech/personalized-badge/pycfrl?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=YELLOW&left_text=weekly+downloads)](https://pepy.tech/projects/pycfrl)
-[![PyPI monthly downloads](https://static.pepy.tech/personalized-badge/pycfrl?period=monthly&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=YELLOW&left_text=weekly+downloads)](https://pepy.tech/projects/pycfrl)
+[![PyPI total downloads](https://static.pepy.tech/personalized-badge/pycfrl?period=total&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=YELLOW&left_text=total+downloads)](https://pepy.tech/projects/pycfrl)
+[![PyPI monthly downloads](https://static.pepy.tech/personalized-badge/pycfrl?period=monthly&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=YELLOW&left_text=monthly+downloads)](https://pepy.tech/projects/pycfrl)
 [![PyPI weekly downloads](https://static.pepy.tech/personalized-badge/pycfrl?period=weekly&units=INTERNATIONAL_SYSTEM&left_color=GRAY&right_color=YELLOW&left_text=weekly+downloads)](https://pepy.tech/projects/pycfrl)
 [![License](https://img.shields.io/pypi/l/pycfrl)](https://pypi.org/project/pycfrl/)
 

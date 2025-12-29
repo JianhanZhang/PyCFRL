@@ -6,7 +6,7 @@ This module implements functions to read or export trajectory data from external
 
    from pycfrl import reader
 
-.. automodule:: pycfrl.reader
+.. automodule:: pycfrl.reader.reader
    :members:
    :show-inheritance:
    :special-members: __init__

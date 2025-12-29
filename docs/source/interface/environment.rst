@@ -6,7 +6,7 @@ This module implements environments and sample functions that could be used to g
     
     from pycfrl import environment
 
-.. automodule:: pycfrl.environment
+.. automodule:: pycfrl.environment.environment
    :members:
    :show-inheritance:
    :special-members: __init__

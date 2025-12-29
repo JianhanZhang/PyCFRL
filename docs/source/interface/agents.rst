@@ -6,7 +6,7 @@ This module implements the fitted Q-iteration algotithm for offline reinforcemen
 
    from pycfrl import agents
 
-.. automodule:: pycfrl.agents
+.. automodule:: pycfrl.agents.agents
    :members:
    :show-inheritance:
    :special-members: __init__

@@ -32,3 +32,9 @@ JOSS/sample.md
 JOSS/try.md
 JOSS/paper_20251104.md
 examples/scratch_work
+experiments/agents_test.py
+experiments/evaluation_test.py
+experiments/synthetic_data_results/results_exp_N_test.csv
+experiments/synthetic_data_results/results_exp_Z_test.csv
+experiments/plotter.R
+.venv

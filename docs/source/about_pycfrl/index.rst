@@ -6,4 +6,6 @@ About PyCFRL
    :caption: Contents
 
    the_pycfrl_team
+   code_of_conduct
+   contributing
    release_notes

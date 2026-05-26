@@ -67,4 +67,6 @@ the use cases of PyCFRL. We appreciate your patience and support!
    :caption: About PyCFRL
 
    about_pycfrl/the_pycfrl_team
+   about_pycfrl/code_of_conduct
+   about_pycfrl/contributing
    about_pycfrl/release_notes

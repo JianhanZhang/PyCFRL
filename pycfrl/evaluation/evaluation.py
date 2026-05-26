@@ -2,8 +2,6 @@ import numpy as np
 import pandas as pd
 import torch
 import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
 import copy
 from ..environment.environment import sample_trajectory, sample_counterfactual_trajectories
 from ..environment.environment import SyntheticEnvironment, SimulatedEnvironment

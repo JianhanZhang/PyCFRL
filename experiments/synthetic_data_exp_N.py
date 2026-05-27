@@ -265,10 +265,10 @@ def run_exp_N(rep, f_x0, f_xt, f_rt, start_seed=1, export=False):
     method_policy = "FQI_NN"
 
     methods = [
-        #"random",
+        "random",
         "full",
-        #"unaware",
-        #"ours",
+        "unaware",
+        "ours",
     ]
 
     mp.set_start_method("spawn")

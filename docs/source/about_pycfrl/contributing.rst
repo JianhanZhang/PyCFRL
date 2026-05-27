@@ -18,7 +18,7 @@ To report a bug, please first search existing issues for the bug. If the bug is 
 yet reported, please open an issue containing the following information:
 
 1. A title that starts with [BUG].
-2. A description of the bug. Notably, please include the both expected behavior of the code and the actual, incorrect behavior of the current code.
+2. A description of the bug. Notably, please include both the expected behavior of the code and the actual, incorrect behavior of the current code.
 3. A piece of code which, when executed, demonstrates the incorrect behavior of the current code.
 4. Any other information that might be helpful.
 
@@ -49,8 +49,8 @@ like to report.
 
 If a maintainer agrees with the suggested feature or improvement, you are highly welcome 
 (but not required) to send pull requests that incorporates the suggested feature or 
-improvement into :code:`PyCFRL`. You are also welcome to send pull requests the incorporates 
-features or improvements suggested by others. If you kindly would like to send such pull 
+improvement into :code:`PyCFRL`. You are also welcome to send pull requests that incorporates 
+features or improvements suggested by others and agreed with by a maintainer. If you kindly would like to send such pull 
 requests, please follow the guidelines below:
 
 1. Before working on the pull request, please make sure that a maintainer has agreed with the suggested features or improvements to avoid wasting time on pull requests that we are unable to accept. It is OK to implement multiple features and/or other improvements in one pull request. In the pull request, please reference the issues corresponding to each of the features and/or other improvements being implemented by the pull request.

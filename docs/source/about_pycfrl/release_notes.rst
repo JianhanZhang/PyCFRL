@@ -1,6 +1,12 @@
 Release Notes
 =======================
 
+0.3.1 (released 05/27/2026)
+^^^^^^^^^^^^^^^^^^^^^^^
+
+This release removes some import statements that import packages not needed 
+by the corresponding code.
+
 0.3.0 (released 09/29/2025)
 ^^^^^^^^^^^^^^^^^^^^^^^
 

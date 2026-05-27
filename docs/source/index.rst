@@ -31,6 +31,7 @@ the use cases of PyCFRL. We appreciate your patience and support!
    :caption: Introduction
 
    introduction/getting_started
+   introduction/empirical_results
    introduction/computing_times
    introduction/faq
 

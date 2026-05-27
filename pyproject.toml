@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "pycfrl"
-version = "0.3.0"
+version = "0.3.1"
 description = "The PyCFRL package implements algorithms to ensure counterfactual fairness in reinforcement learning and provides tools for evaluating the value and counterfactual fairness of reinforcement learning policies."
 readme = "README.md"
 requires-python = ">=3.10"

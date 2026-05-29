@@ -49,6 +49,7 @@ the use cases of PyCFRL. We appreciate your patience and support!
 
    tutorials/example_workflows
    tutorials/common_issues
+   tutorials/runtime_warnings_and_errors
 
 .. toctree::
    :maxdepth: 2

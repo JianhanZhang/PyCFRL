@@ -22,24 +22,31 @@ agent that will be compatible with PyCFRL.
 .. code-block:: python
 
     class RandomAgent(Agent):
-        def __init__(self, p: int | float = 0.5) -> None:
-            self.p = p
+        def __init__(self, num_action_levels: int):
+            self.num_action_levels = num_action_levels
+            self.__name__ = 'RandomAgent'
 
-        def act(
-            self, 
-            z: list | np.ndarray, 
-            xt: list | np.ndarray, 
-            xtm1: list | np.ndarray | None = None, 
-            atm1: list | np.ndarray | None = None, 
-            uat: list | np.ndarray | None = None, 
-            verbose: bool = False
-        ) -> np.ndarray:
-            if verbose: 
+        def act(self, 
+                z: list | np.ndarray, 
+                xt: list | np.ndarray, 
+                xtm1: list | np.ndarray | None = None, 
+                atm1: list | np.ndarray | None = None, 
+                uat: list | np.ndarray | None = None, 
+                is_return_probs: bool = False, 
+                verbose: bool = False
+                ) -> np.ndarray:
+            if verbose:
                 print("RandomAgent taking actions...")
-            N = np.array(z).shape[0]
-            u = np.random.uniform(0, 1, size=N)
-            actions = (u < p).astype(int)
-            return actions
+            N = z.shape[0]
+            out = np.zeros(N)
+            for i in range(N):
+                out[i] = np.random.randint(self.num_action_levels)
+            if is_return_probs:
+                factor = 1 / self.num_action_levels
+                probs = np.ones((N, self.num_action_levels)) * factor
+                return probs
+            else:
+                return out
 
 
 On the other hand, the following agent will not be compatible with PyCFRL 
@@ -50,23 +57,29 @@ compatibility even though it is not used in the function.
 .. code-block:: python
 
     class RandomAgent(Agent):
-        def __init__(self, p: int | float = 0.5) -> None:
-            self.p = p
+        def __init__(self, num_action_levels: int):
+            self.num_action_levels = num_action_levels
+            self.__name__ = 'RandomAgent'
 
-        def act(
-            self, 
-            z: list | np.ndarray, 
-            xt: list | np.ndarray, 
-            xtm1: list | np.ndarray | None = None, 
-            atm1: list | np.ndarray | None = None, 
-            verbose: bool = False
-        ) -> np.ndarray:
-            if verbose: 
+        def act(self, 
+                z: list | np.ndarray, 
+                xt: list | np.ndarray, 
+                xtm1: list | np.ndarray | None = None, 
+                atm1: list | np.ndarray | None = None, 
+                is_return_probs: bool = False, 
+                verbose: bool = False) -> np.ndarray:
+            if verbose:
                 print("RandomAgent taking actions...")
-            N = np.array(z).shape[0]
-            u = np.random.uniform(0, 1, size=N)
-            actions = (u < p).astype(int)
-            return actions
+            N = z.shape[0]
+            out = np.zeros(N)
+            for i in range(N):
+                out[i] = np.random.randint(self.num_action_levels)
+            if is_return_probs:
+                factor = 1 / self.num_action_levels
+                probs = np.ones((N, self.num_action_levels)) * factor
+                return probs
+            else:
+                return out
 
 
 If an agent is a valid custom agent, then it can be used wherever 

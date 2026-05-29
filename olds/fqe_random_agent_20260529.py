@@ -1,37 +1,4 @@
-import numpy as np
-import torch
-import copy
-from ..utils.base_models import LinearRegressor, NeuralNet
-from ..utils.base_models import DecreasingLossWarning, FluctuatingQValueWarning
-from ..utils.base_models import EarlyStoppingChecker, LossMonitor, QValueConvergenceChecker
-from ..utils.custom_errors import InvalidModelError
-from ..agents.agents import Agent
-from sklearn.model_selection import train_test_split
-#from my_utils import glogger
-from typing import Literal, Callable
-from tqdm import tqdm
-import warnings
-
-
-
-def f_ua_default(N: int) -> np.ndarray:
-    """
-    Generate exogenous variables for the actions from a uniform distribution between 0 and 1.
-
-    Args: 
-        N (int): 
-            The total number of individuals for whom the exogenous variables will 
-            be generated.
-    
-    Returns: 
-        ua (np.ndarray): 
-            The generated exogenous variables. It is a (N, 1) array 
-            where each entry is sampled from a uniform distribution between 0 and 1.
-    """
-
-    return np.random.uniform(0, 1, size=[N])
-
-class FQE:
+class FQE_old:
     """
     Implementation of the fitted Q evaluation (FQE) algorithm. 
 
@@ -182,7 +149,7 @@ class FQE:
     def _sanity_check(self) -> None:
         assert self.model_type in ["lm", "nn"], "Invalid model type"
 
-    def _get_action_probs(
+    def _get_actions(
             self, 
             zs: np.ndarray, 
             states: np.ndarray, 
@@ -198,24 +165,22 @@ class FQE:
         N, T, _ = xs.shape  # xs + 1
         
         p = copy.deepcopy(self.policy) # use a deepcopy to preserve the info in original policy
-        action_probs = np.zeros([N, T, self.action_size])
+        actions_taken = np.zeros([N, T])
         for t in range(T): # MIGHT NEED TO CHANGE TO T - 1
             if t == 0:
-                action_probs[:, 0] = p.act(z=zs, 
+                actions_taken[:, 0] = p.act(z=zs, 
                                             xt=xs[:, 0], 
                                             xtm1=None, 
                                             atm1=None, 
-                                            uat=uat, 
-                                            is_return_probs=True)
+                                            uat=uat)
             else:
-                action_probs[:, t] = p.act(z=zs, 
+                actions_taken[:, t] = p.act(z=zs, 
                                             xt=xs[:, t], 
                                             xtm1=xs[:, t - 1], 
                                             atm1=actions[:, t - 1], 
-                                            uat=uat, 
-                                            is_return_probs=True)
+                                            uat=uat)
 
-        return action_probs
+        return actions_taken[:, 1:].reshape(N *(T - 1), -1)
 
     def fit(
             self, 
@@ -349,19 +314,14 @@ class FQE:
                         .numpy()
                     )
                     uat = f_ua(N=N)
-                    action_probs = self._get_action_probs(zs_, xs_, actions_, uat)[:, 1:].reshape(-1, self.action_size)
+                    selected_actions = self._get_actions(zs_, xs_, actions_, uat).reshape(
+                        -1, 1
+                    )
 
                     Y = (
                         rewards.reshape(-1, 1)
-                        + self.gamma * np.multiply(tmp, action_probs).sum(1, keepdims=True)
+                        + self.gamma * np.take_along_axis(tmp, selected_actions.astype(int), axis=1)
                     ).reshape(-1, 1)
-                    #selected_actions = self._get_actions(zs_, xs_, actions_, uat).flatten()
-                    #Y_original = (
-                        #rewards + self.gamma * tmp[np.arange(tmp.shape[0]), selected_actions.astype(int)]
-                    #).reshape(-1, 1)
-                    #print(Y[:20, :])
-                    #print(Y_original[:20, :])
-                    #assert np.allclose(Y, Y_original)
 
                 # generate input
                 X = states
@@ -510,12 +470,12 @@ class FQE:
         sdim = xs.shape[-1] + zs.shape[-1]
         T = actions.shape[1]
         uat = f_ua(N=zs.shape[0])
-        action_probs = self._get_action_probs(zs, xs, actions, uat).reshape(-1, self.action_size)
+        actions_taken = self._get_actions(zs, xs, actions, uat)
         xs_ = copy.deepcopy(xs)
         zs_ = copy.deepcopy(zs)
 
         states = np.concatenate(
-            [xs_, np.repeat(zs_.reshape(-1, 1, zs.shape[-1]), axis=1, repeats=T+1)], axis=2
+            [xs_[:, 1:, :], np.repeat(zs_.reshape(-1, 1, zs.shape[-1]), axis=1, repeats=T)], axis=2
         ).reshape(
             -1, sdim
         )  # use 1: instead of 0: since _get_actions is implemented using next_state
@@ -523,24 +483,62 @@ class FQE:
         #np.random.seed(10) # NEWLY ADDED
         #torch.manual_seed(10) # NEWLY ADDED
         if self.model_type == "lm":
-            '''tmp = np.zeros([states.shape[0], self.action_size])
+            tmp = np.zeros([states.shape[0], self.action_size])
             for a in range(self.action_size):
                 tmp[:, a] = (
                     self.model[a].predict(states.reshape(states.shape[0], -1)).flatten()
                 )
             return np.take_along_axis(
                 tmp, actions_taken.reshape(-1, 1).astype(int), axis=1
-            ).flatten()'''
-            # "lm" mode is currently not supported
-            return False
+            ).flatten()
         elif self.model_type == "nn":
             self.model.eval()
             X = torch.tensor(states, dtype=torch.float32)
-            action_probs = torch.tensor(
-                action_probs.reshape(-1, self.action_size), dtype=torch.float32
+            actions_taken = torch.tensor(
+                actions_taken.reshape(-1, 1), dtype=torch.int64
             )
-            Y = torch.mul(
-                    self.model.forward(X), 
-                    action_probs
-                ).sum(1, keepdims=True)
+            Y = self.model.forward(X).gather(1, actions_taken)
             return Y.detach().numpy().flatten()
+
+
+
+class RandomAgent(Agent):
+    def __init__(self, p: int | float = 0.5) -> None:
+        self.p = p
+
+    def act(
+        self, 
+        z: list | np.ndarray, 
+        xt: list | np.ndarray, 
+        xtm1: list | np.ndarray | None = None, 
+        atm1: list | np.ndarray | None = None, 
+        uat: list | np.ndarray | None = None, 
+        verbose: bool = False
+    ) -> np.ndarray:
+        if verbose: 
+            print("RandomAgent taking actions...")
+        N = np.array(z).shape[0]
+        u = np.random.uniform(0, 1, size=N)
+        actions = (u < p).astype(int)
+        return actions
+
+
+class RandomAgent(Agent):
+        def __init__(self, p: int | float = 0.5) -> None:
+            self.p = p
+
+        def act(
+            self, 
+            z: list | np.ndarray, 
+            xt: list | np.ndarray, 
+            xtm1: list | np.ndarray | None = None, 
+            atm1: list | np.ndarray | None = None, 
+            uat: list | np.ndarray | None = None, 
+            verbose: bool = False
+        ) -> np.ndarray:
+            if verbose: 
+                print("RandomAgent taking actions...")
+            N = np.array(z).shape[0]
+            u = np.random.uniform(0, 1, size=N)
+            actions = (u < p).astype(int)
+            return actions

@@ -14,7 +14,8 @@ experiments. The unit of the computing times here is second (s).
 
 The timing experiments were run on an internal cluster equipped with two 36-core 
 Intel Xeon Gold 6154 CPUs clocked at 3.0 GHz and 187 GB of RAM. Each job was 
-executed via SLURM on a single node using 1 CPU core and 1 GB of memory. Please 
+executed via SLURM on a single node using 1 CPU core and 1 GB of memory. The 
+version of :code:`PyCFRL` used in the timing experiments is version 0.1.0. Please 
 note that the computing times in this section are for reference only. The 
 actual computing times often vary by the computing hardware and the amount of 
 parallel computing tasks. Also, we only recorded the computing time for full 

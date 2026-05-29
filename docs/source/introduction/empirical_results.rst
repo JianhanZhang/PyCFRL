@@ -1,4 +1,4 @@
-Empirical Results
+Empirical Results (Synthetic Data)
 ========================
 
 This section presents an empirical illustration of unfairness reduction resulting 
@@ -6,6 +6,8 @@ from using :code:`SequentialPreprocessor` provided in :code:`PyCFRL`. In particu
 we run experiments using synthetic trajectory data based on the design of synthetic 
 data experiments in `Wang et al. (2025) <https://arxiv.org/abs/2501.06366>`_ with 
 some minor adjustments. 
+
+These illustrations are produced using version 0.3.0 of :code:`PyCFRL`.
 
 Methods Being Compared
 -------------------------

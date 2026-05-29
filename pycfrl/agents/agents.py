@@ -31,6 +31,7 @@ class Agent:
             xtm1: list | np.ndarray | None = None, 
             atm1: list | np.ndarray | None = None, 
             uat: list | np.ndarray | None = None, 
+            is_return_probs: bool = False, 
             **kwargs
     ) -> np.ndarray:
         """
@@ -60,11 +61,18 @@ class Agent:
                 The exogenous variables for each 
                 individual's action. It should be a 2D list or array with shape (N, 1) 
                 where N is the total number of individuals.
+            is_return_probs (bool, optional):
+                When set to :code:`True`, will return the probability of taking each of the valid 
+                actions. When set to :code:`False`, will return the actual action taken.
 
         Returns: 
             actions (np.ndarray): 
                 The decisions made for the individuals. It is a 1D array following the 
-                Single-time Actions Format.
+                Single-time Actions Format. Returned only when :code:`is_return_probs=False`.
+            probs (np.ndarray):
+                The probability of taking each of the valid actions for each of the individuals.
+                It is a 3D array with shape :code:`(N, T, num_actions)`, where :code:`num_actions` 
+                is the number of valid actions. Returned only when :code:`is_return_probs=True`.
         """
 
         pass
@@ -514,6 +522,7 @@ class FQI(Agent):
             atm1: list | np.ndarray | None = None, 
             uat: list | np.ndarray | None = None, 
             preprocess: bool = True, 
+            is_return_probs: bool = False, 
             #**kwargs
         ) -> np.ndarray:
         """
@@ -557,11 +566,22 @@ class FQI(Agent):
                 The exogenous variables for each 
                 individual's action. It should be a 2D list or array with shape (N, 1) 
                 where N is the total number of individuals.
+            is_return_probs (bool, optional):
+                When set to :code:`True`, will return the probability of taking each of the valid 
+                actions. Since FQI is deterministic, the action actually taken will have a probability 
+                of 1, while all other valid actions have probability 0. When set to :code:`False`, 
+                will return the actual action taken.
 
         Returns: 
             actions (np.ndarray): 
                 The decisions made for the individuals. It is a 1D array following the 
-                Single-time Actions Format.
+                Single-time Actions Format. Returned only when :code:`is_return_probs=False`.
+            probs (np.ndarray):
+                The probability of taking each of the valid actions for each of the individuals.
+                It is a 3D array with shape :code:`(N, T, num_actions)`, where :code:`num_actions` 
+                is the number of valid actions. Since FQI is deterministic, the action actually taken 
+                will have a probability of 1, while all other valid actions have probability 0. Returned 
+                only when :code:`is_return_probs=True`.
         """
         
         z = np.array(z)
@@ -580,4 +600,9 @@ class FQI(Agent):
         else:
             states = xt
         actions = self._act_helper(states)
-        return actions
+        if is_return_probs:
+            probs = np.zeros((xt.shape[0], self.action_size))
+            probs[np.arange(len(actions)), actions] = 1.0
+            return probs
+        else:
+            return actions

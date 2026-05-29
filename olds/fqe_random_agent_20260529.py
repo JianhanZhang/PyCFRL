@@ -542,3 +542,27 @@ class RandomAgent(Agent):
             u = np.random.uniform(0, 1, size=N)
             actions = (u < p).astype(int)
             return actions
+        
+
+
+class RandomAgent(Agent):
+    def __init__(self, num_action_levels):
+        self.num_action_levels = num_action_levels
+        self.p1 = 0.5
+        self.__name__ = 'RandomAgent'
+
+    def act(self, z, xt, xtm1=None, atm1=None, uat=None, **kwargs):
+        if uat is None:
+            #np.random.seed(10)
+            N = z.shape[0]
+            out = np.zeros(N)
+            for i in range(N):
+                out[i] = np.random.randint(self.num_action_levels)
+            return out
+            #return np.random.randint(self.num_action_levels)
+        else:
+            action = (uat.flatten() <= self.p1).astype(int)
+            # logits = np.ones_like(uat) * logit(self.p1)
+            #p1 = np.ones_like(uat) * self.p1
+            #p0 = 1 - p1
+            return action

@@ -161,7 +161,7 @@ def test_fqe_univariate_zs_states_nn():
           rewards=rewards_in, 
           max_iter=10)
     out = f.evaluate(zs=zs_in, states=states_in, actions=actions_in)
-    assert(out.shape == (90,))
+    assert(out.shape == (99,))
     assert(np.issubdtype(out.dtype, np.floating))
 
 def test_fqe_multivariate_zs_states_nn():
@@ -190,7 +190,7 @@ def test_fqe_multivariate_zs_states_nn():
           rewards=rewards_in, 
           max_iter=10)
     out = f.evaluate(zs=zs_in, states=states_in, actions=actions_in)
-    assert(out.shape == (80,))
+    assert(out.shape == (88,))
     assert(np.issubdtype(out.dtype, np.floating))
 
 

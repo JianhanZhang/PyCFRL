@@ -6,26 +6,36 @@ from pycfrl.agents.agents import Agent
 
 # A random policy
 class RandomAgent(Agent):
-    def __init__(self, num_action_levels):
+    def __init__(self, num_action_levels: int):
         self.num_action_levels = num_action_levels
-        self.p1 = 0.5
         self.__name__ = 'RandomAgent'
 
-    def act(self, z, xt, xtm1=None, atm1=None, uat=None, **kwargs):
+    def act(self, 
+            z: list | np.ndarray, 
+            xt: list | np.ndarray, 
+            xtm1: list | np.ndarray | None = None, 
+            atm1: list | np.ndarray | None = None, 
+            uat: list | np.ndarray | None = None, 
+            is_return_probs: bool = False, 
+            **kwargs) -> np.ndarray:
+        N = z.shape[0]
         if uat is None:
-            #np.random.seed(10)
-            N = z.shape[0]
             out = np.zeros(N)
             for i in range(N):
                 out[i] = np.random.randint(self.num_action_levels)
-            return out
-            #return np.random.randint(self.num_action_levels)
+            if is_return_probs:
+                factor = 1 / self.num_action_levels
+                probs = np.ones((N, self.num_action_levels)) * factor
+                return probs
+            else:
+                return out
         else:
-            action = (uat.flatten() <= self.p1).astype(int)
-            # logits = np.ones_like(uat) * logit(self.p1)
-            #p1 = np.ones_like(uat) * self.p1
-            #p0 = 1 - p1
-            return action
+            action = (uat.flatten() <= 0.5).astype(int)
+            if is_return_probs:
+                probs = np.ones((N, self.num_action_levels)) * 0.5
+                return probs
+            else:
+                return action
         
 
 

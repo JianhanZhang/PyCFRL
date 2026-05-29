@@ -38,15 +38,23 @@ agent that will be compatible with PyCFRL.
             if verbose:
                 print("RandomAgent taking actions...")
             N = z.shape[0]
-            out = np.zeros(N)
-            for i in range(N):
-                out[i] = np.random.randint(self.num_action_levels)
-            if is_return_probs:
-                factor = 1 / self.num_action_levels
-                probs = np.ones((N, self.num_action_levels)) * factor
-                return probs
+            if uat is None:
+                out = np.zeros(N)
+                for i in range(N):
+                    out[i] = np.random.randint(self.num_action_levels)
+                if is_return_probs:
+                    factor = 1 / self.num_action_levels
+                    probs = np.ones((N, self.num_action_levels)) * factor
+                    return probs
+                else:
+                    return out
             else:
-                return out
+                action = (uat.flatten() <= 0.5).astype(int)
+                if is_return_probs:
+                    probs = np.ones((N, self.num_action_levels)) * 0.5
+                    return probs
+                else:
+                    return action
 
 
 On the other hand, the following agent will not be compatible with PyCFRL 
@@ -71,15 +79,23 @@ compatibility even though it is not used in the function.
             if verbose:
                 print("RandomAgent taking actions...")
             N = z.shape[0]
-            out = np.zeros(N)
-            for i in range(N):
-                out[i] = np.random.randint(self.num_action_levels)
-            if is_return_probs:
-                factor = 1 / self.num_action_levels
-                probs = np.ones((N, self.num_action_levels)) * factor
-                return probs
+            if uat is None:
+                out = np.zeros(N)
+                for i in range(N):
+                    out[i] = np.random.randint(self.num_action_levels)
+                if is_return_probs:
+                    factor = 1 / self.num_action_levels
+                    probs = np.ones((N, self.num_action_levels)) * factor
+                    return probs
+                else:
+                    return out
             else:
-                return out
+                action = (uat.flatten() <= 0.5).astype(int)
+                if is_return_probs:
+                    probs = np.ones((N, self.num_action_levels)) * 0.5
+                    return probs
+                else:
+                    return action
 
 
 If an agent is a valid custom agent, then it can be used wherever 

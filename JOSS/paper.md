@@ -7,6 +7,7 @@ tags:
   - causal inference
 authors:
   - name: Jianhan Zhang
+    orcid: 0009-0000-1434-227X
     corresponding: false 
     affiliation: 1
   - name: Jitao Wang
@@ -22,6 +23,7 @@ authors:
     corresponding: false 
     affiliation: 2
   - name: Zhenke Wu
+    orcid: 0000-0001-7582-669X
     corresponding: true 
     affiliation: 2
 

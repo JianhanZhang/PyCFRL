@@ -1,10 +1,13 @@
-@misc{kusner2018cf,
-      title={Counterfactual {F}airness}, 
-      author={Matt J. Kusner and Joshua R. Loftus and Chris Russell and Ricardo Silva},
-      year={2018},
-      eprint={1703.06856},
-      archivePrefix={arXiv},
-      primaryClass={stat.ML}
+@inproceedings{kusner2018cf,
+ author = {Kusner, Matt J and Loftus, Joshua and Russell, Chris and Silva, Ricardo},
+ booktitle = {Advances in Neural Information Processing Systems},
+ editor = {I. Guyon and U. Von Luxburg and S. Bengio and H. Wallach and R. Fergus and S. Vishwanathan and R. Garnett},
+ pages = {},
+ publisher = {Curran Associates, Inc.},
+ title = {Counterfactual Fairness},
+ url = {https://proceedings.neurips.cc/paper_files/paper/2017/file/a486cd07e4ac3d270571622f4f316ec5-Paper.pdf},
+ volume = {30},
+ year = {2017}
 }
 
 @misc{wang2025cfrl,
@@ -13,7 +16,8 @@
       year={2025},
       eprint={2501.06366},
       archivePrefix={arXiv},
-      primaryClass={stat.ML}
+      primaryClass={stat.ML},
+      url={https://arxiv.org/abs/2501.06366}, 
 }
 
 @misc{weerts2023fairlearn,
@@ -23,7 +27,8 @@
       year={2023},
       volume={24},
       number={257},
-      pages={1--8}
+      pages={1--8},
+      url={http://jmlr.org/papers/v24/23-0389.html}
 }
 
 @misc{aif360-oct-2018,
@@ -35,22 +40,25 @@
 	John Richards and Diptikalyan Saha and Prasanna Sattigeri and
 	Moninder Singh and Kush R. Varshney and Yunfeng Zhang},
     month = oct,
-    year = {2018}
+    year = {2018},
+    url = {https://arxiv.org/abs/1810.01943}
 }
 
 @inproceedings{fairness_gym,
 author = {D'Amour, Alexander and Srinivasan, Hansa and Atwood, James and Baljekar, Pallavi and Sculley, D. and Halpern, Yoni},
-title = {Fairness is Not Static: Deeper Understanding of Long Term Fairness via Simulation Studies},
+title = {Fairness is not static: deeper understanding of long term fairness via simulation studies},
 year = {2020},
 isbn = {9781450369367},
 publisher = {Association for Computing Machinery},
 address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3351095.3372878},
 doi = {10.1145/3351095.3372878},
+abstract = {As machine learning becomes increasingly incorporated within high impact decision ecosystems, there is a growing need to understand the long-term behaviors of deployed ML-based decision systems and their potential consequences. Most approaches to understanding or improving the fairness of these systems have focused on static settings without considering long-term dynamics. This is understandable; long term dynamics are hard to assess, particularly because they do not align with the traditional supervised ML research framework that uses fixed data sets. To address this structural difficulty in the field, we advocate for the use of simulation as a key tool in studying the fairness of algorithms. We explore three toy examples of dynamical systems that have been previously studied in the context of fair decision making for bank loans, college admissions, and allocation of attention. By analyzing how learning agents interact with these systems in simulation, we are able to extend previous work, showing that static or single-step analyses do not give a complete picture of the long-term consequences of an ML-based decision system. We provide an extensible open-source software framework for implementing fairness-focused simulation studies and further reproducible research, available at https://github.com/google/ml-fairness-gym.},
 booktitle = {Proceedings of the 2020 Conference on Fairness, Accountability, and Transparency},
-pages = {525-534},
+pages = {525–534},
 numpages = {10},
 location = {Barcelona, Spain},
-series = {FAccT '20}
+series = {FAT* '20}
 }
 
 @article{d3rlpy,
@@ -60,7 +68,8 @@ series = {FAccT '20}
   year    = {2022},
   volume  = {23},
   number  = {315},
-  pages   = {1--20}
+  pages   = {1--20},
+  url     = {http://jmlr.org/papers/v23/22-0017.html}
 }
 
 @article{towers2024gymnasium,
@@ -69,7 +78,6 @@ series = {FAccT '20}
   journal={arXiv preprint arXiv:2407.17032},
   year={2024}
 }
-
 
 @Article{piette2023powerED,
 author="Piette, John D
@@ -81,7 +89,7 @@ and Chen, Jenny
 and Wu, Zhenke
 and Bohnert, Amy S B",
 title="An Automatically Adaptive Digital Health Intervention to Decrease Opioid-Related Risk While Conserving Counselor Time: Quantitative Analysis of Treatment Decisions Based on Artificial Intelligence and Patient-Reported Risk Measures",
-journal="Journal of Medical Internet Research",
+journal="J Med Internet Res",
 year="2023",
 month="Jul",
 day="11",
@@ -90,7 +98,10 @@ pages="e44165",
 keywords="artificial intelligence; opioid safety; telehealth; reinforcement learning; pain management",
 abstract="Background: Some patients prescribed opioid analgesic (OA) medications for pain experience serious side effects, including dependence, sedation, and overdose. As most patients are at low risk for OA-related harms, risk reduction interventions requiring multiple counseling sessions are impractical on a large scale. Objective: This study evaluates whether an intervention based on reinforcement learning (RL), a field of artificial intelligence, learned through experience to personalize interactions with patients with pain discharged from the emergency department (ED) and decreased self-reported OA misuse behaviors while conserving counselors' time. Methods: We used data representing 2439 weekly interactions between a digital health intervention (``Prescription Opioid Wellness and Engagement Research in the ED'' [PowerED]) and 228 patients with pain discharged from 2 EDs who reported recent opioid misuse. During each patient's 12 weeks of intervention, PowerED used RL to select from 3 treatment options: a brief motivational message delivered via an interactive voice response (IVR) call, a longer motivational IVR call, or a live call from a counselor. The algorithm selected session types for each patient each week, with the goal of minimizing OA risk, defined in terms of a dynamic score reflecting patient reports during IVR monitoring calls. When a live counseling call was predicted to have a similar impact on future risk as an IVR message, the algorithm favored IVR to conserve counselor time. We used logit models to estimate changes in the relative frequency of each session type as PowerED gained experience. Poisson regression was used to examine the changes in self-reported OA risk scores over calendar time, controlling for the ordinal session number (1st to 12th). Results: Participants on average were 40 (SD 12.7) years of age; 66.7{\%} (152/228) were women and 51.3{\%} (117/228) were unemployed. Most participants (175/228, 76.8{\%}) reported chronic pain, and 46.2{\%} (104/225) had moderate to severe depressive symptoms. As PowerED gained experience through interactions over a period of 142 weeks, it delivered fewer live counseling sessions than brief IVR sessions (P=.006) and extended IVR sessions (P<.001). Live counseling sessions were selected 33.5{\%} of the time in the first 5 weeks of interactions (95{\%} CI 27.4{\%}-39.7{\%}) but only for 16.4{\%} of sessions (95{\%} CI 12.7{\%}-20{\%}) after 125 weeks. Controlling for each patient's changes during the course of treatment, this adaptation of treatment-type allocation led to progressively greater improvements in self-reported OA risk scores (P<.001) over calendar time, as measured by the number of weeks since enrollment began. Improvement in risk behaviors over time was especially pronounced among patients with the highest risk at baseline (P=.02). Conclusions: The RL-supported program learned which treatment modalities worked best to improve self-reported OA risk behaviors while conserving counselors' time. RL-supported interventions represent a scalable solution for patients with pain receiving OA prescriptions. Trial Registration: Clinicaltrials.gov NCT02990377; https://classic.clinicaltrials.gov/ct2/show/NCT02990377 ",
 issn="1438-8871",
-doi="10.2196/44165"
+doi="10.2196/44165",
+url="https://www.jmir.org/2023/1/e44165",
+url="https://doi.org/10.2196/44165",
+url="http://www.ncbi.nlm.nih.gov/pubmed/37432726"
 }
 
 @InProceedings{riedmiller2005fqi,
@@ -100,7 +111,7 @@ and Camacho, Rui
 and Brazdil, Pavel B.
 and Jorge, Al{\'i}pio M{\'a}rio
 and Torgo, Lu{\'i}s",
-title="Neural Fitted {Q} Iteration -- First Experiences with a Data Efficient Neural Reinforcement Learning Method",
+title="Neural Fitted Q Iteration -- First Experiences with a Data Efficient Neural Reinforcement Learning Method",
 booktitle="Machine Learning: ECML 2005",
 year="2005",
 publisher="Springer Berlin Heidelberg",
